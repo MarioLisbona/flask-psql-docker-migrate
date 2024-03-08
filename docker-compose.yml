@@ -3,7 +3,7 @@ volumes:
 
 services:
   pgsql:
-    image: postgres:14
+    image: postgres:12.11
     restart: always
     environment:
       POSTGRES_PASSWORD: mypassword # environment variable that sets the superuser password for PostgreSQL
