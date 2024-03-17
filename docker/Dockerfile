@@ -18,4 +18,4 @@ ENV FLASK_ENV=development
 
 # running Flask as a module, we sleep a little here to make sure that the DB is fully instanciated before running our app'
 CMD ["sh", "-c", "sleep 5 \ 
-    && python -m flask run"]
+    && python -m flask run --host=0.0.0.0 --port=5007"]
