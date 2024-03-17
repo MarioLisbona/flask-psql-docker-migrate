@@ -15,3 +15,6 @@ flask shell
 This command will start an interactive Python shell with your Flask application context loaded, allowing you to interact with your application and database.
 
 That's it! You are now inside the Flask shell within your Docker container, and you can execute Python commands within the context of your Flask application.
+
+- Access PSQL docker instasnce
+  - psql -h localhost -p 5432 -U mario -d todos
