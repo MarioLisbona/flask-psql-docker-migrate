@@ -2,12 +2,15 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask import Flask, jsonify
 from routes import init_routes
+import os
 
 # creates an application that is named after the name of the file
 app = Flask(__name__)
 
 app.config["SECRET_KEY"] = "some_dev_key"
-app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://mario:mypassword@pgsql:5432/todos"
+print(os.environ.get('DATABASE_URL'))
+# app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://mario:mypassword@pgsql:5432/todos"
+app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get('DATABASE_URL')
 
 # initializing routes
 init_routes(app)
