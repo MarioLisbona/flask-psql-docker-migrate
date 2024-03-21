@@ -8,9 +8,13 @@ import os
 app = Flask(__name__)
 
 app.config["SECRET_KEY"] = "some_dev_key"
-print(os.environ.get('DATABASE_URL'))
-# app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://mario:mypassword@pgsql:5432/todos"
-app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get('DATABASE_URL')
+
+# Check if running on Heroku
+if 'DATABASE_URL' in os.environ:
+    app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
+else:
+    # Local PostgreSQL database URL is not available    
+    app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get('LOCAL_DATABASE_URL')
 
 # initializing routes
 init_routes(app)
